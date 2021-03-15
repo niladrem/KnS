@@ -1,13 +1,9 @@
 name: Python package
 
 on: [push]
-#  push:
-#    branches: [ $default-branch ]
-#  pull_request:
-#    branches: [ $default-branch ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -24,4 +20,4 @@ jobs:
         python setup.py develop
     - name: Test with unittest
       run: |
-        cd tests & python -m unittest
+        python -m unittest
