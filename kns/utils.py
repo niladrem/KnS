@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 def minimize_permutation(in_permutation) -> list:
     in_sorted = sorted(in_permutation)
     return [in_sorted.index(i) for i in in_permutation]
@@ -27,8 +29,8 @@ def extract_list(input_list, permutation):
     return out1, out2
 
 
-def has_twins(in_list, twins=None):
-    for length in range(4, len(in_list) + 1, 2):
+def has_twins(in_list, min_twins=2, twins=None):
+    for length in range(min_twins*2, len(in_list) + 1, 2):
         idx = 0
         permutations = []
         generate_permutations([], length / 2, length, permutations)
@@ -45,4 +47,18 @@ def has_twins(in_list, twins=None):
             idx += 1
     return False
 
+
+def add_number_to_permutation(permutation, position, number):
+    out = deepcopy(permutation)
+    out.insert(position, number)
+    return out
+
+
+def test_candidates_for_position(permutation, min_len, available_numbers, position):
+    candidates = []
+    for number in available_numbers:
+        tmp = add_number_to_permutation(permutation, position, number)
+        if not has_twins(tmp, min_len):
+            candidates.append(number)
+    return candidates
 

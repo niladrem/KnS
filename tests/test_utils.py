@@ -30,6 +30,15 @@ class TestUtils(unittest.TestCase):
         self.assertTrue(utils.has_twins([1, 2, 3, 4]))
         self.assertTrue(utils.has_twins([1, 5, 4, 2, 6, 5]))
 
+    def test_add_number_to_permutation(self):
+        self.assertEqual([1], utils.add_number_to_permutation([], 0, 1))
+        self.assertEqual([1, 2, 3], utils.add_number_to_permutation([1, 3], 1, 2))
+        self.assertEqual([1, 2, 3], utils.add_number_to_permutation([1, 2], 2, 3))
+
+    def test_test_candidates_for_position(self):
+        self.assertEqual([3, 4], utils.test_candidates_for_position([1, 2], 2, [3, 4], 0))
+        self.assertEqual([], utils.test_candidates_for_position([1, 2, 3], 2, [4], 3))
+
 
 if __name__ == '__main__':
     unittest.main()
