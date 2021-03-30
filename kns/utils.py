@@ -27,7 +27,7 @@ def extract_list(input_list, permutation):
     return out1, out2
 
 
-def has_twins(in_list):
+def has_twins(in_list, twins=None):
     for length in range(4, len(in_list) + 1, 2):
         idx = 0
         permutations = []
@@ -35,9 +35,12 @@ def has_twins(in_list):
         while idx + length <= len(in_list):
             for permutation in permutations:
                 perm1, perm2 = extract_list(in_list[idx:idx+length], permutation)
-                perm1 = minimize_permutation(perm1)
-                perm2 = minimize_permutation(perm2)
-                if perm1 == perm2:
+                perm1_ = minimize_permutation(perm1)
+                perm2_ = minimize_permutation(perm2)
+                if perm1_ == perm2_:
+                    if twins:
+                        twins.p1 = perm1
+                        twins.p2 = perm2
                     return True
             idx += 1
     return False
