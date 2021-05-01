@@ -34,7 +34,7 @@ def loop(n, k):
     available_numbers = [i for i in range(1, n+1)]
     while len(available_numbers):
         print_current_permutation(current_permutation)
-        idx = get_position(len(current_permutation) + 1)
+        idx = get_position(len(current_permutation))
         candidates = test_candidates_for_position(current_permutation, k, available_numbers, idx)
         if len(candidates):
             tmp = random.choice(candidates)
@@ -58,7 +58,7 @@ def loop(n, k):
 
             str_perm = ', '.join(str_perm)
                 
-            print("Permutacja: [%s]" % str_perm)#str(current_permutation))
+            print("Permutacja: [%s]" % str_perm)
             print("Ciasne bliźniaki: %s, %s" % (CP1 + str(twins.p1) + CEND, CP2 + str(twins.p2) + CEND))
             return True
 
