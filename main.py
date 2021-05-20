@@ -18,10 +18,10 @@ def main():
     out = loop(n, k)
     if out:
         print("Wygrał gracz")
-        print(defeat)
+        print(victory)
     else:
         print("Wygrał człowiek")
-        print(victory)
+        print(defeat)
 
 
 def loop(n, k):
